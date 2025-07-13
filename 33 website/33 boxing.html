@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      background: url('pure-black-background-wcs86b1g1awsprv8.jpg') no-repeat center center fixed;
+      background-size: cover;
+      text-align: center;
+    }
+
+    header {
+      padding: 40px 20px 20px;
+    }
+
+    .subheading {
+      color: #fff;
+      font-weight: bold;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      line-height: 1.3;
+      margin: 10px 0;
+    }
+
+    .highlight {
+      background: linear-gradient(90deg, #ffcc00, #ff7f00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
+      text-shadow: 0 0 8px rgba(255, 165, 0, 0.8);
+    }
+
+    .description {
+      font-size: 1rem;
+      color: #ddd;
+      margin-top: 10px;
+    }
+
+.video-section {
+  margin: 20px auto;
+  max-width: 720px; /* increased from 500px */
+  padding: 10px;
+}
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border: 2px solid #000;
+      border-radius: 10px;
+      box-shadow: 0 0 25px rgba(255, 165, 0, 0.8);
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .cta-button {
+      margin-top: 30px;
+      background: linear-gradient(90deg, #ffcc00, #ff7f00);
+      color: black;
+      font-weight: bold;
+      font-size: 1.2rem;
+      padding: 15px 35px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #ffb300a0;
+      transition: transform 0.2s ease;
+    }
+
+.cta-button {
+  ...
+  transition: transform 0.25s ease, box-shadow 0.25s ease; /* more noticeable */
+}
+
+    .logo {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .cta-button {
+        font-size: 1rem;
+        padding: 12px 24px;
+      }
+    }
+
+    /* Fade Up Animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .fade-up:nth-child(1) { animation-delay: 0.2s; }
+    .fade-up:nth-child(2) { animation-delay: 0.4s; }
+    .fade-up:nth-child(3) { animation-delay: 0.6s; }
+    .fade-up:nth-child(4) { animation-delay: 0.8s; }
+    .fade-up:nth-child(5) { animation-delay: 1s; }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+	
+.top-right-buttons {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  gap: 5px;
+  z-index: 10;
+  align-items: center; /* Align icons vertically */
+}
+
+.icon-img {
+  width: auto;
+  height: 32px;
+  max-width: 40px; /* Set a limit to prevent overly wide icons */
+  aspect-ratio: 1.2 / 1; /* Slightly wider than tall */
+  border-radius: 6px;
+  transition: transform 0.2s ease, filter 0.3s ease;
+  cursor: pointer;
+  filter: brightness(1) drop-shadow(0 0 3px rgba(255, 165, 0, 0.5));
+  object-fit: contain; /* Prevents image distortion */
+}
+
+.icon-img:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2) drop-shadow(0 0 6px rgba(255, 165, 0, 0.8));
+}
+
+.icon-instagram {
+  aspect-ratio: 1.2 / 1;
+}
+
+.icon-glove {
+  height: 25px;
+  width: auto;
+  max-width: 26px;
+  object-fit: contain;
+  margin-top: 1px; /* NEW: adjust vertical alignment */
+}
+.white-shadow {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+  font-size: 2rem;
+  line-height: 1.3;
+  margin: 10px 0;
+  font-weight: bold;
+}
+.gradient-divider {
+  font-size: 2rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ffcc00, #ff7f00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 8px rgba(255, 165, 0, 0.8);
+  margin: 8px 0;
+  user-select: none;
+  line-height: 1;
+}
+.uploaded-image {
+  margin-top: 15px;
+}
+
+.uploaded-image input[type="file"] {
+  color: #fff;
+  background-color: #222;
+  border: 2px solid #ff9900;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.uploaded-image img {
+  max-width: 100%;
+  max-height: 100px;
+  margin-top: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 0px rgba(255, 165, 0, 0.6);
+}
+
+.cta-button:hover,
+.cta-button:active {
+  transform: scale(1.12); /* Increased from 1.08 to 1.12 */
+  box-shadow: 0 0 25px #ffb300cc;
+}
+
+/* Make the bottom image grow on hover and click */
+.uploaded-image img:hover,
+.uploaded-image img:active {
+  transform: scale(1.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 20px rgba(255, 165, 0, 0.8);
+}
+
+.pro-formula-text {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.result-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 40px auto;
+  max-width: 800px;
+}
+
+.result-gallery img {
+  width: 180px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.result-gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 1);
+}
+
+
+.result-images-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.result-images-row img {
+  width: 160px;
+  height: auto;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.result-images-row img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 28px rgba(255, 255, 255, 1);
+}
+
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="subheading fade-up">FREE MASTERCLASS REVEALS...</div>
+    <h1 class="fade-up">How To Actually <br>Become an <span class="highlight">ELITE BOXER</span></h1>
+    <p class="description fade-up">
+      Watch the FULL 5 minute masterclass below revealing the 3 simple parts ↓
+    </p>
+  </header>
+
+  <section class="video-section fade-up">
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/3zup3O2NTLs" allowfullscreen></iframe>
+    </div>
+  </section>
+
+<a href="https://33boxing.gumroad.com/l/BM" target="_blank">
+  <button class="cta-button fade-up" style="animation-delay: 0.6s;">JOIN NOW</button>
+</a>
+
+<div class="gradient-divider fade-up" style="animation-delay: 0.7s;">-</div>
+
+
+<h1 class="white-shadow fade-up" style="animation-delay: 0.8s;">
+  The Only Resource you'll NEED to reach your dreams...
+</h1>
+
+<div class="uploaded-image fade-up" style="animation-delay: 0.9s;">
+<img src="mockup.png" alt="Boxing Mastery" class="fade-up" style="max-width: 100%; border-radius: 10px;" />
+
+
+</div>
+
+<div class="top-right-buttons fade-up" style="animation-delay: 0.2s;">
+  <a href="https://instagram.com/33boxing.io" target="_blank" title="Instagram">
+    <img src="instagram-icon.png" alt="Instagram" class="icon-img icon-instagram" />
+  </a>
+  <a href="https://33boxing.gumroad.com/l/TLE" target="_blank" title="Free Guide">
+    <img src="glove-icon.png" alt="Free Guide" class="icon-img icon-glove" />
+  </a>
+</div>
+<script>
+  document.getElementById("imageUploader").addEventListener("change", function () {
+    const file = this.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      const img = document.getElementById("customImage");
+      img.src = e.target.result;
+      img.style.display = "block";
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  });
+  
+</script>
+
+<div class="pro-formula-text fade-up" style="animation-delay: 1s;">
+    <h1 style="color: white; text-shadow: 0 0 25px rgba(255, 165, 0, 0.8); font-size: 2rem; line-height: 1.3; margin: 10px 0; font-weight: bold;">
+      BOXING MASTERY 2.0 🏆
+    </h1>
+    <p style="color: #aaa; font-size: 0.95rem; margin-top: -10px;">
+      Full 9 Elite MASTERIES covering training, nutrition, mentality, technique, fascia training, and more to reach the elite level. Here's just a tiny bit of what we cover...
+    </p>
+    <ul style="list-style: none; padding-left: 0; margin-top: 1px; font-size: 1.05rem; line-height: 1.8;">
+      <li>☑ <strong>How to develop WORLD CLASS boxing skill</strong> ⭐<br><small>(This works even if you started boxing late)</small></li>
+      <li>☑ <strong>How to unlock an ELITE MENTALITY</strong> 🧠<br><small>(to stop getting nervous, play with confidence, and build discipline)</small></li>
+      <li>☑ <strong>How to unlock ELITE athleticism</strong> 💪<br><small>(even if you don't have natural speed or stamina)</small></li>
+      <li>☑ <strong>How to BIOHACK your body</strong> 🧬<br><small>(and enhance your hormones for elite performance)</small></li>
+      <li>☑ <strong>And much, much more...</strong></li>
+    </ul>
+  </div>
+
+  <!-- Reduced margin-top on JOIN TODAY button to bring it closer -->
+  <a href="https://33boxing.gumroad.com/l/BM" target="_blank">
+    <button class="cta-button fade-up" style="animation-delay: 1.2s; margin-top: 10px; margin-bottom: 20px;">JOIN TODAY</button>
+  </a>
+
+  <div class="gradient-divider fade-up" style="animation-delay: 1.3s;">-</div>
+
+  <h1 class="fade-up" style="
+    animation-delay: 1.4s;
+    font-size: 2.5rem;
+    color: #fff;
+text-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+    margin-top: 10px;
+  ">
+    MASTERY #1
+  </h1>
+  
+<img id="mastery-1" src="m1.jpg" alt="Boxing Mastery #1" class="fade-up" style="max-width: 25%; border-radius: 10px; margin-top: 15px; animation-delay: 1.2s;" />
+
+  <h1 class="fade-up" style="
+    animation-delay: 1.4s;
+    font-size: 2.5rem;
+    color: #fff;
+text-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+    margin-top: 10px;
+  ">
+  
+  <div class="pro-formula-text fade-up" style="animation-delay: 1s;">
+    <h1 style="color: white; text-shadow: 0 0 25px rgba(255, 165, 0, 0.8); font-size: 2rem; line-height: 1.3; margin: 10px 0; font-weight: bold;">
+      Instinct Training Mastery 🧬
+    </h1>
+    <p style="color: #aaa; font-size: 0.95rem; margin-top: -10px;">
+      The individual training module with video tutorials and lessons on how to develop your IDP (Instinct-Driven Playstyle)
+    </p>
+    <ul style="list-style: none; padding-left: 0; margin-top: 1px; font-size: 1.05rem; line-height: 1.8;">
+      <li>☑ <strong>The IDP Theory</strong> 🔄<br><small> (reveals how all of the greatest boxers developed it, and how you can too)</small></li>
+      <li>☑ <strong>Instinct Training Video Session</strong> 🧬<br><small>(a follow-along video tutorial on how to train your instincts through unrestricted training)</small></li>
+      <li>☑ <strong>Mind Rewiring</strong> 🧠<br><small>(teaches how to rewire your mind in order to fight with instinct)</small></li>
+    </ul>
+  </div>
+  
+    <div class="gradient-divider fade-up" style="animation-delay: 1.3s;">-</div>
+  
+    MASTERY #2
+  </h1>
+  
+<img id="mastery-2" src="m2.jpg" alt="Boxing Mastery #2" class="fade-up" style="max-width: 25%; border-radius: 10px; margin-top: 15px; animation-delay: 1.2s;" />
+
+  <h1 class="fade-up" style="
+    animation-delay: 1.4s;
+    font-size: 2.5rem;
+    color: #fff;
+text-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+    margin-top: 10px;
+  ">
+  
+    <div class="pro-formula-text fade-up" style="animation-delay: 1s;">
+    <h1 style="color: white; text-shadow: 0 0 25px rgba(255, 165, 0, 0.8); font-size: 2rem; line-height: 1.3; margin: 10px 0; font-weight: bold;">
+      The Nutrition Mastery 🥩
+    </h1>
+    <p style="color: #aaa; font-size: 0.95rem; margin-top: -10px;">
+      The complete list of REAL foods that you need to consume, and avoid, to maximize your performance on the pitch.
+    </p>
+    <ul style="list-style: none; padding-left: 0; margin-top: 1px; font-size: 1.05rem; line-height: 1.8;">
+      <li>☑ <strong>REAL FOODS</strong> 🥩🍯<br><small> (reveals the importance of eating real, raw foods from nature for optimal health and performance)</small></li>
+      <li>☑ <strong>PERFORMANCE KILLERS</strong> ❌<br><small>(reveals the list of foods that are killing your performance and destroying your career)</small></li>
+      <li>☑ <strong>30-DAY MEAL PLAN</strong> 🔋<br><small>(a month of breakfast, lunch, and dinner ideas completely done for you)</small></li>
+    </ul>
+  </div>
+  
+    <div class="gradient-divider fade-up" style="animation-delay: 1.3s;">-</div>
+  
+    MASTERY #3
+  </h1>
+  
+<img id="mastery-3" src="m3.jpg" alt="Boxing Mastery #3" class="fade-up" style="max-width: 25%; border-radius: 10px; margin-top: 15px; animation-delay: 1.2s;" />
+
+  <h1 class="fade-up" style="
+    animation-delay: 1.4s;
+    font-size: 2.5rem;
+    color: #fff;
+text-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+    margin-top: 10px;
+  ">
+  
+      <div class="pro-formula-text fade-up" style="animation-delay: 1s;">
+    <h1 style="color: white; text-shadow: 0 0 25px rgba(255, 165, 0, 0.8); font-size: 2rem; line-height: 1.3; margin: 10px 0; font-weight: bold;">
+      Mental Rewiring Mastery 🧠
+    </h1>
+    <p style="color: #aaa; font-size: 0.95rem; margin-top: -10px;">
+      The full guide on rewiring your mind for SUCCESS & using visualization to improve your boxing skills.
+    </p>
+    <ul style="list-style: none; padding-left: 0; margin-top: 1px; font-size: 1.05rem; line-height: 1.8;">
+      <li>☑ <strong>Esoteric Boxer</strong> 🥊<br><small> (reveals the esoteric secrets to achieving anything you want)</small></li>
+      <li>☑ <strong>Mike Tyson Guide</strong> 🏆<br><small>(teaches how fighters like Mike Tyson used visualization to improve at boxing)</small></li>
+      <li>☑ <strong>Unbreakable Discipline</strong> 🥷<br><small>(learn how to become a boxer who doesn't need to rely on motivation)</small></li>
+    </ul>
+  </div>
+
+  <div class="gradient-divider fade-up" style="animation-delay: 1.3s;">-</div>
+
+  <a href="https://33boxing.gumroad.com/l/BM" target="_blank">
+    <button class="cta-button fade-up" style="animation-delay: 1.2s; margin-top: 10px; margin-bottom: 20px;">JOIN NOW</button>
+  </a>
+
+  <h1 class="fade-up" style="
+    animation-delay: 1.4s;
+    font-size: 2.5rem;
+    color: #fff;
+text-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+    margin-top: 10px;
+  ">
+
+    MASTERY #4
+  </h1>
+  
+<img id="mastery-4" src="m4.jpg" alt="Boxing Mastery #4" class="fade-up" style="max-width: 25%; border-radius: 10px; margin-top: 15px; animation-delay: 1.2s;" />
+
+  <h1 class="fade-up" style="
+    animation-delay: 1.4s;
+    font-size: 2.5rem;
+    color: #fff;
+text-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+    margin-top: 10px;
+  ">
+  
+        <div class="pro-formula-text fade-up" style="animation-delay: 1s;">
+    <h1 style="color: white; text-shadow: 0 0 25px rgba(255, 165, 0, 0.8); font-size: 2rem; line-height: 1.3; margin: 10px 0; font-weight: bold;">
+      Athleticism Mastery 💪
+    </h1>
+    <p style="color: #aaa; font-size: 0.95rem; margin-top: -10px;">
+      The complete guide with follow along videos to train your fascia & documents on how the best new & old-gen boxers train.
+    </p>
+    <ul style="list-style: none; padding-left: 0; margin-top: 1px; font-size: 1.05rem; line-height: 1.8;">
+      <li>☑ <strong>Fascial Training</strong> 🕸️<br><small> (follow-along video tutorials to increase speed, strength, proprioception, and overall athleticism)</small></li>
+      <li>☑ <strong>Train Like Elites</strong> 🚀<br><small>(learn how the best new-gen & old-gen fighters train)</small></li>
+    </ul>
+  </div>
+  
+    <div class="gradient-divider fade-up" style="animation-delay: 1.3s;">-</div>
+  
+    MASTERY #5
+  </h1>
+  
+<img id="mastery-5" src="m5.jpg" alt="Boxing Mastery #5" class="fade-up" style="max-width: 25%; border-radius: 10px; margin-top: 15px; animation-delay: 1.2s;" />
+
+  <h1 class="fade-up" style="
+    animation-delay: 1.4s;
+    font-size: 2.5rem;
+    color: #fff;
+text-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+    margin-top: 10px;
+  ">
+  
+        <div class="pro-formula-text fade-up" style="animation-delay: 1s;">
+    <h1 style="color: white; text-shadow: 0 0 25px rgba(255, 165, 0, 0.8); font-size: 2rem; line-height: 1.3; margin: 10px 0; font-weight: bold;">
+      Flow State Mastery 🌀
+    </h1>
+    <p style="color: #aaa; font-size: 0.95rem; margin-top: -10px;">
+      Learn to achieve flow, or "the zone" consistently and on command every single fight or spar.
+    </p>
+    <ul style="list-style: none; padding-left: 0; margin-top: 1px; font-size: 1.05rem; line-height: 1.8;">
+      <li>☑ <strong>Unlocking Your Subconscious</strong> 🧘<br><small> (tap into flow state and re-wire your brain to eliminate nervousness and achieve complete confidence)</small></li>
+      <li>☑ <strong>Enter The Flow State</strong> 📈<br><small>(learn the triggers to enter flow on command)</small></li>
+    </ul>
+  </div>
+  
+    <div class="gradient-divider fade-up" style="animation-delay: 1.3s;">-</div>
+  
+    MASTERY #6
+  </h1>
+  
+<img id="mastery-6" src="m6.jpg" alt="Boxing Mastery #6" class="fade-up" style="max-width: 25%; border-radius: 10px; margin-top: 15px; animation-delay: 1.2s;" />
+
+  <h1 class="fade-up" style="
+    animation-delay: 1.4s;
+    font-size: 2.5rem;
+    color: #fff;
+text-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+    margin-top: 10px;
+  ">
+  
+        <div class="pro-formula-text fade-up" style="animation-delay: 1s;">
+    <h1 style="color: white; text-shadow: 0 0 25px rgba(255, 165, 0, 0.8); font-size: 2rem; line-height: 1.3; margin: 10px 0; font-weight: bold;">
+      Natural Lifestyle Mastery ☀️
+    </h1>
+    <p style="color: #aaa; font-size: 0.95rem; margin-top: -10px;">
+      Utilize nature's powers to your advantage, and enhance your performance and recovery
+    </p>
+    <ul style="list-style: none; padding-left: 0; margin-top: 1px; font-size: 1.05rem; line-height: 1.8;">
+      <li>☑ <strong>Sun Exposure</strong> 🌞<br><small> (learn how to use the sun to recover faster & increase energy)</small></li>
+      <li>☑ <strong>Grounding</strong> 🦶🏽<br><small>(connect to nature's terrain to reduce inflammation and prevent injuries)</small></li>
+      <li>☑ <strong>EMFs</strong> 📱<br><small>(remove things from your enviroment which kill your hormones & recovery)</small></li>
+    </ul>
+  </div>
+  
+    <div class="gradient-divider fade-up" style="animation-delay: 1.3s;">-</div>
+  
+    MASTERY #7
+  </h1>
+  
+<img id="mastery-7" src="m7.jpg" alt="Boxing Mastery #7" class="fade-up" style="max-width: 25%; border-radius: 10px; margin-top: 15px; animation-delay: 1.2s;" />
+
+  <h1 class="fade-up" style="
+    animation-delay: 1.4s;
+    font-size: 2.5rem;
+    color: #fff;
+text-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+    margin-top: 10px;
+  ">
+  
+          <div class="pro-formula-text fade-up" style="animation-delay: 1s;">
+    <h1 style="color: white; text-shadow: 0 0 25px rgba(255, 165, 0, 0.8); font-size: 2rem; line-height: 1.3; margin: 10px 0; font-weight: bold;">
+      Hormone Mastery 🧪
+    </h1>
+    <p style="color: #aaa; font-size: 0.95rem; margin-top: -10px;">
+      Learn how to boost your hormones natural to increase strength, energy, and recovery
+    </p>
+    <ul style="list-style: none; padding-left: 0; margin-top: 1px; font-size: 1.05rem; line-height: 1.8;">
+      <li>☑ <strong>Testosterone</strong> 🧘<br><small> (increase your strength and drive by testosterone-enhancing foods and exercises)</small></li>
+      <li>☑ <strong>Human Growth Hormone</strong> ⚠️<br><small>(learn how to increase your human growth hormone production for faster recovery)</small></li>
+      <li>☑ <strong>Dopamine</strong> 😀<br><small>(detox and re-wire your brain to enjoy boxing the same way you did when you just started out)</small></li>
+    </ul>
+  </div>
+  
+    <div class="gradient-divider fade-up" style="animation-delay: 1.3s;">-</div>
+  
+    MASTERY #8
+  </h1>
+  
+<img id="mastery-8" src="m8.jpg" alt="Boxing Mastery #8" class="fade-up" style="max-width: 25%; border-radius: 10px; margin-top: 15px; animation-delay: 1.2s;" />
+
+  <h1 class="fade-up" style="
+    animation-delay: 1.4s;
+    font-size: 2.5rem;
+    color: #fff;
+text-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+    margin-top: 10px;
+  ">
+  
+          <div class="pro-formula-text fade-up" style="animation-delay: 1s;">
+    <h1 style="color: white; text-shadow: 0 0 25px rgba(255, 165, 0, 0.8); font-size: 2rem; line-height: 1.3; margin: 10px 0; font-weight: bold;">
+      Punching Biomechanics Mastery 🏅
+    </h1>
+    <p style="color: #aaa; font-size: 0.95rem; margin-top: -10px;">
+      Learn how to punch correctly in order to generate maximum power
+    </p>
+    <ul style="list-style: none; padding-left: 0; margin-top: 1px; font-size: 1.05rem; line-height: 1.8;">
+      <li>☑ <strong>Biomechanics Guide</strong> 💣<br><small> (full guide teaching how to punch correctly to generate KO power even with bad genetics)</small></li>
+      <li>☑ <strong>In-fight Examples</strong> 💥<br><small>(slowed down knockouts teaching you how to punch correctly)</small></li>
+    </ul>
+  </div>
+  
+  
+  <div class="gradient-divider fade-up" style="animation-delay: 1.3s;">-</div>
+  
+    MASTERY #9
+  </h1>
+  
+<img id="mastery-9" src="m9.jpg" alt="Boxing Mastery #9" class="fade-up" style="max-width: 25%; border-radius: 10px; margin-top: 15px; animation-delay: 1.2s;" />
+
+  <h1 class="fade-up" style="
+    animation-delay: 1.4s;
+    font-size: 2.5rem;
+    color: #fff;
+text-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+    margin-top: 10px;
+  ">
+  
+          <div class="pro-formula-text fade-up" style="animation-delay: 1s;">
+    <h1 style="color: white; text-shadow: 0 0 25px rgba(255, 165, 0, 0.8); font-size: 2rem; line-height: 1.3; margin: 10px 0; font-weight: bold;">
+      Boxing Skill Mastery 🏅
+    </h1>
+    <p style="color: #aaa; font-size: 0.95rem; margin-top: -10px;">
+      Learn the techniques which pro's use but no one talks about them
+    </p>
+    <ul style="list-style: none; padding-left: 0; margin-top: 1px; font-size: 1.05rem; line-height: 1.8;">
+      <li>☑ <strong>3 Lane Theory</strong> 💣<br><small> (a guide how to control the pace of the fight & dominate your opponent)</small></li>
+      <li>☑ <strong>Style Breakdowns</strong> 💥<br><small>(learn how & when to use each guard/style)</small></li>
+    </ul>
+  </div>
+  
+      <a href="https://33boxing.gumroad.com/l/BM" target="_blank">
+    <button class="cta-button fade-up" style="animation-delay: 1.2s; margin-top: 10px; margin-bottom: 20px;">JOIN NOW</button>
+  </a>
+
+
+  <h1 class="fade-up" style="
+    animation-delay: 1.4s;
+    font-size: 2.5rem;
+    color: #fff;
+text-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+    margin-top: 10px;
+  ">
+  
+      <div class="gradient-divider fade-up" style="animation-delay: 1.3s;">-</div>
+  
+  
+    BONUS #1
+  </h1>
+  
+<img id="bonus-2" src="b2.jpg" alt="Bonus #2" class="fade-up" style="max-width: 25%; border-radius: 10px; margin-top: 15px; animation-delay: 1.2s;" />
+
+  <h1 class="fade-up" style="
+    animation-delay: 1.4s;
+    font-size: 2.5rem;
+    color: #fff;
+text-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+    margin-top: 10px;
+  ">
+  
+          <div class="pro-formula-text fade-up" style="animation-delay: 1s;">
+    <h1 style="color: white; text-shadow: 0 0 25px rgba(255, 165, 0, 0.8); font-size: 2rem; line-height: 1.3; margin: 10px 0; font-weight: bold;">
+     Fight Breakdowns 📷
+    </h1>
+    <p style="color: #aaa; font-size: 0.95rem; margin-top: -10px;">
+      In-depth fight breakdowns helping you understand what the elites think & do during fights.
+    </p>
+    <ul style="list-style: none; padding-left: 0; margin-top: 1px; font-size: 1.05rem; line-height: 1.8;">
+      <li>☑ <strong>The Analysis</strong> 📊<br><small> (in depth analysis of the most iconic fights)</small></li>
+      <li>☑ <strong>Key Notes</strong> 📝<br><small>(revealing the key things which made one fighting win and the other lose)</small></li>
+    </ul>
+  </div>
+  
+          <div class="gradient-divider fade-up" style="animation-delay: 1.3s;">-</div>
+  
+    BONUS #2
+  </h1>
+  
+<img id="bonus-3" src="b3.jpg" alt="Bonus #3" class="fade-up" style="max-width: 25%; border-radius: 10px; margin-top: 15px; animation-delay: 1.2s;" />
+
+  <h1 class="fade-up" style="
+    animation-delay: 1.4s;
+    font-size: 2.5rem;
+    color: #fff;
+text-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+    margin-top: 10px;
+  ">
+  
+          <div class="pro-formula-text fade-up" style="animation-delay: 1s;">
+    <h1 style="color: white; text-shadow: 0 0 25px rgba(255, 165, 0, 0.8); font-size: 2rem; line-height: 1.3; margin: 10px 0; font-weight: bold;">
+     Fight-day Guide 🏆
+    </h1>
+    <p style="color: #aaa; font-size: 0.95rem; margin-top: -10px;">
+      A full guide on how to prepare the right way in order to do your best on fight night.
+    </p>
+    <ul style="list-style: none; padding-left: 0; margin-top: 1px; font-size: 1.05rem; line-height: 1.8;">
+      <li>☑ <strong>Physical Preparation</strong> 🥇<br><small> (reveals things such as diets, hydration & warm up to help you prepare physically)</small></li>
+      <li>☑ <strong>Mental Preparation</strong> 📝<br><small>(teaches you about stess managing, emotions & the right way of thinking to help you prepare mentally)</small></li>
+    </ul>
+  </div>
+  
+            <div class="gradient-divider fade-up" style="animation-delay: 1.3s;">-</div>
+  
+    BONUS #3
+  </h1>
+  
+<img id="bonus-4" src="b4.jpg" alt="Bonus #4" class="fade-up" style="max-width: 25%; border-radius: 10px; margin-top: 15px; animation-delay: 1.2s;" />
+
+  <h1 class="fade-up" style="
+    animation-delay: 1.4s;
+    font-size: 2.5rem;
+    color: #fff;
+text-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+    margin-top: 10px;
+  ">
+  
+          <div class="pro-formula-text fade-up" style="animation-delay: 1s;">
+    <h1 style="color: white; text-shadow: 0 0 25px rgba(255, 165, 0, 0.8); font-size: 2rem; line-height: 1.3; margin: 10px 0; font-weight: bold;">
+     Pro Lessons 🧠
+    </h1>
+    <p style="color: #aaa; font-size: 0.95rem; margin-top: -10px;">
+      A folder with videos of best boxers revealing the key things which made them the best.
+    </p>
+    <ul style="list-style: none; padding-left: 0; margin-top: 1px; font-size: 1.05rem; line-height: 1.8;">
+      <li>☑ <strong>Skill Lessons</strong> 🏆<br><small> (best fighters revealing the secret techniques which helped them dominate fights)</small></li>
+      <li>☑ <strong>Training Lessons</strong> 🏋️<br><small>(best fighters revealing the training principles which helped them become the best)</small></li>
+    </ul>
+  </div>
+  
+    <a href="https://33boxing.gumroad.com/l/BM" target="_blank">
+    <button class="cta-button fade-up" style="animation-delay: 1.2s; margin-top: 10px; margin-bottom: 20px;">START WINNING</button>
+  </a>
+  
+<div style="position: relative; width: 100%; overflow: hidden; margin-top: 10px;">
+ 
+  
+  <!-- Image Row -->
+<div class="result-images-row fade-up" style="animation-delay: 1.5s;">
+  <img src="r1.jpg" alt="Result 1" />
+  <img src="r2.jpg" alt="Result 2" />
+  <img src="r44.jpg" alt="Result 3" />
+</div>
+  
+
+
+<script>
+  function scrollImages(direction) {
+    const container = document.getElementById('image-carousel');
+    const scrollAmount = container.clientWidth * 0.5; // Scroll half the width
+    container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
