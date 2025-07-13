@@ -1,0 +1,6 @@
+.highlight {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(255, 165, 0, 0.8); /* ADDED SHADOW */
+}
